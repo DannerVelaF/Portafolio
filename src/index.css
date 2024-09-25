@@ -14,6 +14,7 @@
 
 :root {
   --bg-color: #121212;
+  --primary-color: #00a97f;
 }
 
 html,
@@ -21,6 +22,8 @@ body {
   height: 100%;
   margin: 0;
   color: #cbcbcc;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--primary-color) var(--bg-color);
 }
 body {
   background-color: var(--bg-color);
@@ -73,6 +76,7 @@ body {
   left: 3.5em;
 }
 
+/* Keyframes */
 @keyframes bblFadInOut {
   0%,
   80%,
@@ -82,4 +86,42 @@ body {
   40% {
     box-shadow: 0 2.5em 0 0;
   }
+}
+
+.animateBlob {
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  background-image: url(/public/profile.jpg);
+  animation: animateBlob 5s linear infinite;
+}
+
+@keyframes animateBlob {
+  0% {
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+  34% {
+    border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+  }
+  67% {
+    border-radius: 100% 60% 60% 100% / 60% 60% 100% 100%;
+  }
+  100% {
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+}
+
+@keyframes wipe-in-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:wipe:down"] {
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-down both;
+}
+
+.show-section {
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-down both;
 }
