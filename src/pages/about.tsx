@@ -1,11 +1,13 @@
-import Reveal from "../lib/Reveal";
+import Reveal from "../lib/animation/Reveal";
 
 function About() {
   return (
     <section id="about">
-      <div className="w-[75%] mx-auto h-full items-center flex ">
-        <div>
-          <h1 className="text-4xl text-[# ] font-bold">Acerca de mi</h1>
+      <div className="w-[75%] mx-auto pt-44">
+        <h1 className=" mx-auto lg:text-4xl text-[#00A97F] font-bold block ">
+          Acerca de mi
+        </h1>
+        <div className=" mx-auto items-center flex ">
           <div className="text-xl py-[51px]">
             <Reveal>
               <p>

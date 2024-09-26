@@ -5,22 +5,22 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import Reveal from "../lib/Reveal";
+import Reveal from "../lib/animation/Reveal";
 export default function HeroPage() {
   return (
-    <section id="hero">
+    <section id="hero" className="min-h-screen flex ">
       <div className=" lg:w-[75%] mx-auto flex lg:justify-between justify-center items-center min-h-full flex-col-reverse lg:flex-row gap-[32px]">
-        <div className="lg:w-[777px] tracking-wider text-center lg:text-start">
+        <div className="lg:w-[777px] tracking-wider lg:items-start flex items-center flex-col gap-1">
           <Reveal>
             <span className="lg:text-xl text-lg">Hola, mi nombre es</span>
           </Reveal>
           <Reveal>
-            <h1 className="lg:text-[64px] text-[32px] mx-0 text-[#00A97F] font-bold mt-0 mb-0 leading-tight">
+            <h1 className="lg:text-[64px] text-[32px] mx-0 text-[#00A97F] font-bold  leading-tight">
               Danner Vela
             </h1>
           </Reveal>
           <Reveal>
-            <h2 className="lg:text-[64px] text-[24px] text-[#CBCBCC] font-bold mt-0 mb-0 leading-tight relative">
+            <h2 className="lg:text-[64px] text-[24px] text-[#CBCBCC] font-bold  leading-tight relative">
               Desarrollador FullStack
             </h2>
           </Reveal>
@@ -33,7 +33,7 @@ export default function HeroPage() {
               </strong>
             </p>
           </Reveal>
-          <Reveal>
+          <Reveal direction="y" overflow="none">
             <div className="mt-5 flex items-center gap-10 lg:justify-start justify-center flex-col-reverse lg:flex-row">
               <Button text="Descargar Cv" />
               <div className="flex text-2xl lg:text-4xl  gap-8">
