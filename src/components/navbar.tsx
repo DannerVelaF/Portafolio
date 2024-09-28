@@ -24,6 +24,7 @@ export default function Navbar() {
     { to: "#hero", text: "Inicio" },
     { to: "#about", text: "Sobre mi" },
     { to: "#proyects", text: "Proyectos" },
+    { to: "skills", text: "Habilidades" },
     { to: "#contact", text: "Contactame" },
   ];
   const [showMenu, setShowMenu] = useState(false);
