@@ -41,7 +41,7 @@ function Reveal({
         variants={variants}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.1, ease: "easeIn" }}
+        transition={{ duration: 0.45, delay: 0.1, ease: "easeIn" }}
       >
         {children}
       </motion.div>

@@ -1,20 +1,15 @@
-import { GoHome } from "react-icons/go";
-import { CiUser } from "react-icons/ci";
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { motion } from "framer-motion";
 interface NavLinkProps {
   to: string;
   text: string;
-  icon: ReactNode;
 }
 
-interface NavbarProps {
-  currentSection: string;
-}
-
-export default function Navbar({ currentSection }: NavbarProps) {
+export default function Navbar() {
   const [href, setHref] = useState<string>("#hero");
+  const [currentSection, setCurrentSection] = useState("");
+
   useEffect(() => {
     if (currentSection) {
       setHref(currentSection);
@@ -26,58 +21,64 @@ export default function Navbar({ currentSection }: NavbarProps) {
   };
 
   const navLinks: NavLinkProps[] = [
-    { to: "#hero", text: "Home", icon: <GoHome /> },
-    { to: "#about", text: "About", icon: <CiUser /> },
-    // Otros enlaces...
+    { to: "#hero", text: "Inicio" },
+    { to: "#about", text: "Sobre mi" },
+    { to: "#proyects", text: "Proyectos" },
+    { to: "#contact", text: "Contactame" },
   ];
   const [showMenu, setShowMenu] = useState(false);
-  return (
-    <nav className="fixed z-50 flex justify-center lg:items-center items-end lg:flex-row flex-col bottom-12 w-full ">
-      {/* {Responsive menu} */}
-      {showMenu && (
-        <ul className="lg:hidden lg:w-[475px] lg:h-[70px] h-[210px] w-[110px] bg-[#1E1E1E]/50 flex lg:flex-row flex-col px-[9px] py-[12px] lg:items-center backdrop-blur-md border-[#FFFFFF]/25 border rounded-2xl lg:gap-[30px] me-5 ">
-          {navLinks.map((link, index) => (
-            <div
-              className="flex flex-col items-start lg:items-center"
-              key={index}
-            >
-              <li
-                key={index}
-                className="lg:bg-[#121212]/50 lg:backdrop-blur-md lg:w-[45px] w-[39px] h-[39px] lg:h-[45px] rounded-full lg:border-[#FFFFFF]/25 lg:border flex justify-center items-center lg:text-[35px] text-[15px] hover:text-white lg:hover:scale-150 transition-all ease-out duration-500 flex-col  relative ps-[20px] lg:ps-0"
-              >
-                <a
-                  href={link.to}
-                  title={link.text}
-                  className="flex gap-1 items-center"
-                  onClick={() => setShowMenu(!showMenu)}
-                >
-                  {link.icon}
-                  <span className="lg:hidden block">{link.text}</span>
-                </a>
-              </li>
-            </div>
-          ))}
-        </ul>
-      )}
 
+  useEffect(() => {
+    // valida que el loader haya desaparecido para verificar el section en pantalla
+    const options = {
+      root: null, // ventana del navegador como viewport
+      threshold: 0.1, // el 70% del elemento debe estar visible
+    };
+
+    // Verifica que section esta en el viewport y recoje su id
+    const handleSectionVisible = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setCurrentSection(`#${entry.target.id}`);
+        }
+      });
+    };
+
+    // Inicia el observador
+    const observer = new IntersectionObserver(handleSectionVisible, options);
+
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => {
+      observer.observe(section); // Observar cada sección individualmente
+    });
+    return () => {
+      sections.forEach((section) => {
+        observer.unobserve(section); // Dejar de observar las secciones cuando el componente se desmonte
+      });
+    };
+  }, []);
+
+  return (
+    <nav className="">
       {/* Desktop menu */}
-      <ul className="lg:w-[475px] lg:h-[70px] h-[210px] w-[110px] bg-[#1E1E1E]/50 hidden lg:flex lg:flex-row flex-col px-[9px] py-[12px] lg:items-center backdrop-blur-md border-[#FFFFFF]/25 border rounded-2xl lg:gap-[30px] me-5 ">
+      <ul className="lg:flex gap-[73px]  hidden">
         {navLinks.map((link, index) => (
           <div
             className="flex flex-col items-start lg:items-center justify-center relative"
             key={index}
           >
-            <li
-              key={index}
-              className=" lg:bg-[#121212]/50 lg:backdrop-blur-md lg:w-[45px] w-[39px] h-[39px] lg:h-[45px] rounded-full lg:border-[#FFFFFF]/25 lg:border flex justify-center items-center lg:text-[35px] text-[15px] hover:text-white lg:hover:scale-125 transition-all ease-out duration-500 flex-col ps-[20px] lg:ps-0 z-10"
-            >
+            <li key={index} className="">
               <a
                 href={link.to}
                 title={link.text}
-                className="flex gap-1 items-center justify-center"
+                className={`flex gap-1 items-center justify-center transition-all ease-out ${
+                  href === link.to || currentSection === link.to
+                    ? "text-[#00A97F] scale-105"
+                    : ""
+                }`}
                 onClick={() => handleHref(link.to)}
               >
-                {link.icon}
+                {link.text}
               </a>
             </li>
             {(href === link.to || currentSection === link.to) && (
@@ -101,12 +102,33 @@ export default function Navbar({ currentSection }: NavbarProps) {
         ))}
       </ul>
 
-      <button
-        className="w-[45px] h-[45px] flex items-center justify-center bg-[#121212] border border-[#FFFFFF]/25 rounded-xl  lg:hidden me-[27px]"
-        onClick={() => setShowMenu(!showMenu)}
-      >
-        <IoMenu className="w-[26px] h-[26px]" />
-      </button>
+      <div className="relative">
+        <button
+          className="w-[45px] h-[45px] flex items-center justify-center bg-[#121212] border border-[#FFFFFF]/25 rounded-xl  lg:hidden relative"
+          onClick={() => setShowMenu(!showMenu)}
+        >
+          <IoMenu className="w-[26px] h-[26px]" />
+        </button>
+        {/* {Responsive menu} */}
+        {showMenu && (
+          <ul className="absolute mt-3 right-0 border w-[120px] px-[12px] py-7 flex flex-col gap-2 rounded-xl backdrop-blur-lg bg-[#121212]/85">
+            {navLinks.map((link, index) => (
+              <div className="" key={index}>
+                <li key={index} className="">
+                  <a
+                    href={link.to}
+                    title={link.text}
+                    className="flex gap-1 items-center"
+                    onClick={() => setShowMenu(!showMenu)}
+                  >
+                    <span className="lg:hidden block">{link.text}</span>
+                  </a>
+                </li>
+              </div>
+            ))}
+          </ul>
+        )}
+      </div>
     </nav>
   );
 }

@@ -1,43 +1,51 @@
-import Reveal from "../lib/animation/Reveal";
+import Photo from "../../public/profile.jpg";
 
 function About() {
   return (
     <section id="about">
-      <div className="w-[75%] mx-auto pt-44">
-        <h1 className=" mx-auto lg:text-4xl text-[#00A97F] font-bold block ">
-          Acerca de mi
-        </h1>
-        <div className=" mx-auto items-center flex ">
-          <div className="text-xl py-[51px]">
-            <Reveal>
-              <p>
-                Estudiante universitario de la carrera de ingeniería de sistemas
-                e informática en Perú. Mi interés se centra principalmente en el
-                desarrollo&nbsp;
-                <strong className="text-white font-bold">
-                  Fullstack con React y Laravel.
-                </strong>
-              </p>
-            </Reveal>
-            <Reveal>
-              <p>
-                A lo largo de mi trayecto universitario he liderado diversos
-                proyectos académicos, donde&nbsp;
-                <strong className="text-white font-bold">
-                  he desarrollado aplicaciones web completas que abarcan desde
-                  interfaces dinámicas con ReactJs, implementación y conexión
-                  con APis e integrando tecnologías como bases de datos con SQL.
-                </strong>
-              </p>
-            </Reveal>
-            <Reveal>
-              <p>
-                Me gusta crear cosas nuevas para la web y me esfuerzo en mejorar
-                continuamente mis habilidades, explorando nuevas herramientas y
-                tecnologías que un ayuden en mi desarrollo del dia a dia.
-              </p>
-            </Reveal>
+      <div className="lg:w-[75%] mx-auto pt-44  ">
+        <div className="relative">
+          <h1 className=" text-4xl text-[#00A97F] font-bold relative text-center">
+            Acerca de mi
+          </h1>
+          <span className="absolute left-1/2 transform -translate-x-1/2 -bottom-4 w-[50px] h-1 bg-[#00A97F]"></span>
+        </div>
+
+        <div className="lg:mt-12 lg:grid lg:grid-cols-2 place-items-center lg:items-center justify-between">
+          <div className="text-xl text-wrap">
+            <p className="mb-2">
+              Soy estudiante universitario de la carrera de ingeniería de
+              sistemas e informática en Perú. Mi interés se centra
+              principalmente en el&nbsp;
+              <b className="text-white">
+                desarrollo Fullstack con React y Laravel.
+              </b>
+            </p>
+            <p className="mb-2">
+              A lo largo de mi trayecto universitario he desarrollado diversos
+              proyectos personales y académicos, donde&nbsp;
+              <b className="text-white">
+                he desarrollado aplicaciones web completas
+              </b>
+              &nbsp;que abarcan desde&nbsp;
+              <b className="text-white">interfaces dinámicas con ReactJs </b>
+              ,&nbsp;
+              <b className="text-white">conexión con la parte del backend</b> y
+              otras tecnologías.&nbsp;
+              <b className="text-white">
+                Integrando tecnologías como bases SQL.
+              </b>
+            </p>
+            <p>
+              Estoy abierto a nuevas oportunidades de trabajo donde pueda
+              contribuir y aprender cosas nuevas en mi vida profesional.
+            </p>
           </div>
+          <img
+            src={Photo}
+            alt="Danner Vela Photo"
+            className=" aspect-square lg:w-[500px] w-[300px] animateBlob border-4 border-white/60 pointer-events-none"
+          />
         </div>
       </div>
     </section>
