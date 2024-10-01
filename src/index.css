@@ -28,19 +28,33 @@ body {
 body {
   background-color: var(--bg-color);
 }
+
+section {
+  min-height: 100%;
+}
+
 #hero {
   background-image: url(/public/gradiente.png);
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100%;
+  mask-image: linear-gradient(black 95%, transparent);
 }
+
 #about {
   background-image: url(/public/about-gradient.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100%;
+  mask-image: linear-gradient(black 80%, transparent);
+}
+
+#proyects {
+  background-image: url(/public/proyects.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  mask-image: linear-gradient(to top, black 80%, transparent);
 }
 
 /* Loader */

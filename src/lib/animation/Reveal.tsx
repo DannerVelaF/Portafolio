@@ -4,17 +4,15 @@ import { motion, useInView, useAnimation } from "framer-motion";
 interface Props {
   children: JSX.Element;
   width?: "fit-content" | "100%";
-  direction?: "x" | "y"; // Nueva prop para definir la dirección
-  distance?: number;
+  delay?: number;
   overflow?: "hidden" | "none";
 }
 
 function Reveal({
   children,
   width = "fit-content",
-  direction = "x",
-  distance = -75,
   overflow = "hidden",
+  delay = 0.5,
 }: Props) {
   const ref = useRef(null);
 
@@ -22,11 +20,8 @@ function Reveal({
   const mainControls = useAnimation();
 
   const variants = {
-    hidden:
-      direction === "x"
-        ? { opacity: 0, x: distance }
-        : { opacity: 0, y: -distance },
-    visible: { opacity: 1, x: 0, y: 0 },
+    hidden: { opacity: 0, y: 75 },
+    visible: { opacity: 1, y: 0 },
   };
 
   useEffect(() => {
@@ -41,7 +36,11 @@ function Reveal({
         variants={variants}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.45, delay: 0.1, ease: "easeIn" }}
+        transition={{
+          duration: 0.8,
+          delay: delay,
+          ease: [0, 0.71, 0.2, 1.01],
+        }}
       >
         {children}
       </motion.div>

@@ -1,5 +1,6 @@
 import HeroPage from "./pages/hero";
 import About from "./pages/about";
+import Projects from "./pages/Projects";
 import Loader from "./components/loader";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
@@ -20,6 +21,7 @@ export default function App() {
       <main className="h-full flex-1">
         <HeroPage />
         <About />
+        <Projects />
       </main>
     </div>
   );

@@ -3,27 +3,29 @@ import Button from "../components/button";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { MdKeyboardArrowDown } from "react-icons/md";
+
 import Reveal from "../lib/animation/Reveal";
 export default function HeroPage() {
   return (
-    <section id="hero" className="min-h-screen flex ">
+    <section id="hero" className="min-h-screen flex relative">
       <div className="lg:w-[75%] mx-auto flex  justify-center items-center min-h-full flex-col-reverse lg:flex-row gap-[32px]">
         <div className="lg:w-[777px] tracking-wider  flex items-center flex-col gap-1">
-          <Reveal direction="y">
-            <span className="lg:text-xl text-lg">Hola, mi nombre es</span>
+          <Reveal>
+            <span className="lg:text-2xl text-xl">Hola, mi nombre es</span>
           </Reveal>
-          <Reveal direction="y">
-            <h1 className="lg:text-[64px] text-[32px] mx-0 text-[#00A97F] font-bold  leading-tight">
+          <Reveal delay={0.7}>
+            <h1 className="lg:text-[64px] text-[35px] mx-0 text-[#00A97F] font-bold  leading-tight">
               Danner Vela
             </h1>
           </Reveal>
-          <Reveal direction="y">
-            <h2 className="lg:text-[64px] text-[24px] text-[#CBCBCC] font-bold  leading-tight relative">
+          <Reveal delay={0.9}>
+            <h2 className="lg:text-[64px] text-[32px] text-[#CBCBCC] font-bold  leading-tight relative">
               Desarrollador FullStack
             </h2>
           </Reveal>
 
-          <Reveal direction="y" overflow="none">
+          <Reveal overflow="none" delay={1}>
             <div className="mt-5 flex items-center gap-10 lg:justify-start justify-center flex-col ">
               <Button text="Descargar Cv" />
               <div className="flex text-2xl lg:text-4xl  gap-8">
@@ -46,6 +48,17 @@ export default function HeroPage() {
             </div>
           </Reveal>
         </div>
+        <a
+          href="#about"
+          className="text-[#CBCBCC] mb-3 animate-bounce absolute bottom-0 flex flex-col items-center justify-center"
+        >
+          <Reveal>
+            <span className="text-sm flex flex-col items-center">
+              Scrool
+              <MdKeyboardArrowDown className="text-white text-4xl -mt-2" />
+            </span>
+          </Reveal>
+        </a>
       </div>
     </section>
   );
