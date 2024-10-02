@@ -18,7 +18,7 @@ export default function App() {
   return (
     <div className="h-screen flex flex-col relative">
       <Header />
-      <main className="h-full flex-1">
+      <main className="h-full flex-1 flex flex-col">
         <HeroPage />
         <About />
         <Projects />

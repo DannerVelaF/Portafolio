@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 interface Props {
   children: JSX.Element;
@@ -7,8 +7,7 @@ interface Props {
   delay?: number;
   overflow?: "hidden" | "none";
 }
-
-function Reveal({
+function Opacity({
   children,
   width = "fit-content",
   overflow = "hidden",
@@ -20,8 +19,8 @@ function Reveal({
   const mainControls = useAnimation();
 
   const variants = {
-    hidden: { opacity: 0, y: 75 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: { opacity: 1, scale: 1 },
   };
 
   useEffect(() => {
@@ -48,4 +47,4 @@ function Reveal({
   );
 }
 
-export default Reveal;
+export default Opacity;

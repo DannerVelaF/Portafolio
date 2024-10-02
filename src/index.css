@@ -29,15 +29,12 @@ body {
   background-color: var(--bg-color);
 }
 
-section {
-  min-height: 100%;
-}
-
 #hero {
   background-image: url(/public/gradiente.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  min-height: 100%;
   mask-image: linear-gradient(black 95%, transparent);
 }
 
@@ -46,6 +43,8 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  min-height: 100%;
+
   mask-image: linear-gradient(black 80%, transparent);
 }
 
@@ -54,7 +53,7 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  mask-image: linear-gradient(to top, black 80%, transparent);
+  mask-image: linear-gradient(to top, black 90%, transparent);
 }
 
 /* Loader */
