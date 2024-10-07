@@ -20,7 +20,7 @@ export default function HeroPage() {
             </h1>
           </Reveal>
           <Reveal delay={0.9}>
-            <h2 className="lg:text-[64px] text-[32px] text-[#CBCBCC] font-bold  leading-tight relative">
+            <h2 className="lg:text-[64px] text-[32px] text-[#CBCBCC] font-bold   leading-tight relative">
               Desarrollador FullStack
             </h2>
           </Reveal>
@@ -55,7 +55,7 @@ export default function HeroPage() {
           <Reveal>
             <span className="text-sm flex flex-col items-center">
               Scrool
-              <MdKeyboardArrowDown className="text-white text-4xl -mt-2" />
+              <MdKeyboardArrowDown className="text-white text-4xl mb-6" />
             </span>
           </Reveal>
         </a>

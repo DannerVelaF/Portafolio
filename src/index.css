@@ -12,6 +12,12 @@
   }
 }
 
+@layer utilities {
+  .mask-gradient {
+    mask-image: linear-gradient(black 90%, transparent);
+  }
+}
+
 :root {
   --bg-color: #121212;
   --primary-color: #00a97f;
@@ -44,15 +50,13 @@ body {
   background-size: cover;
   background-position: center;
   min-height: 100%;
-
-  mask-image: linear-gradient(black 80%, transparent);
+  /* mask-image: linear-gradient(black 90%, transparent); */
 }
 
 #proyects {
   background-image: url(/public/proyects.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
   mask-image: linear-gradient(to top, black 90%, transparent);
 }
 
@@ -147,4 +151,9 @@ body {
   background-color: rgba(0, 150, 255, 0.6);
   border-radius: 50%;
   pointer-events: none;
+}
+
+.cards {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
 }

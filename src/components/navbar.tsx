@@ -1,9 +1,17 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { motion } from "framer-motion";
+
+import { IoHome } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
+import { FaCode } from "react-icons/fa";
+import { IoIosBookmark } from "react-icons/io";
+import { IoMdMail } from "react-icons/io";
+
 interface NavLinkProps {
   to: string;
   text: string;
+  icon?: ReactNode;
 }
 
 export default function Navbar() {
@@ -21,11 +29,11 @@ export default function Navbar() {
   };
 
   const navLinks: NavLinkProps[] = [
-    { to: "#hero", text: "Inicio" },
-    { to: "#about", text: "Sobre mi" },
-    { to: "#proyects", text: "Proyectos" },
-    { to: "skills", text: "Habilidades" },
-    { to: "#contact", text: "Contactame" },
+    { to: "#hero", text: "Inicio", icon: <IoHome /> },
+    { to: "#about", text: "Sobre mi", icon: <FaUser /> },
+    { to: "#proyects", text: "Proyectos", icon: <IoIosBookmark /> },
+    { to: "skills", text: "Habilidades", icon: <FaCode /> },
+    { to: "#contact", text: "Contactame", icon: <IoMdMail /> },
   ];
   const [showMenu, setShowMenu] = useState(false);
 
@@ -112,7 +120,7 @@ export default function Navbar() {
         </button>
         {/* {Responsive menu} */}
         {showMenu && (
-          <ul className="absolute mt-3 right-0 border w-[120px] px-[12px] py-7 flex flex-col gap-2 rounded-xl backdrop-blur-lg bg-[#121212]/85">
+          <ul className="absolute mt-3 right-0 border w-[130px] px-[12px] py-7 flex flex-col gap-2 rounded-xl backdrop-blur-lg bg-[#121212]/85">
             {navLinks.map((link, index) => (
               <div className="" key={index}>
                 <li key={index} className="">
@@ -122,6 +130,7 @@ export default function Navbar() {
                     className="flex gap-1 items-center"
                     onClick={() => setShowMenu(!showMenu)}
                   >
+                    {link.icon}
                     <span className="lg:hidden block">{link.text}</span>
                   </a>
                 </li>

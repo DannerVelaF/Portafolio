@@ -31,8 +31,8 @@ export const Projects: Project[] = [
     title: "Boticas Montezor",
     description: (
       <>
-        Sistema para una botica que permite gestionar operaciones como la
-        administración de productos y ventas. Desarrollé módulos con{" "}
+        Sistema desarrolador para una botica que permite gestionar operaciones
+        como la administración de productos y ventas. Desarrollé módulos con{" "}
         <b className="text-white">ReactJs</b> y{" "}
         <b className="text-white">TailwindCss</b>, incluyendo un dashboard con
         métricas clave y un apartado de ventas.
